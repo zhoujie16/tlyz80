@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/animate.css"/>
+		<script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<style type="text/css">
+			.test{
+				width: 10rem;
+				height: 2.5rem;
+				margin: 5rem;
+				background-color: red;
+				/*display: none;*/
+			}
+			.hidden{
+				display: none;
+			}
+		</style>
+		<div class="test hidden animated" >
+			
+		</div>
+		<button type="button" class="mui-btn btn-1">111</button>
+		<button type="button" class="mui-btn btn-2">222</button>
+	</body>
+	<script type="text/javascript">
+		$('button.btn-1').on('tap',function(){
+			$('.test').show()
+			$('.test').removeClass('bounceOutRight').addClass('bounceInRight')
+		})
+		$('button.btn-2').on('tap',function(){
+			$('.test').removeClass('bounceInRight').addClass('bounceOutRight')
+		})
+	</script>
+
+</html>
