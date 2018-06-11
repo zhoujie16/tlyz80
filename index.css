@@ -339,12 +339,18 @@ body {
 	height: 22.5rem;
 	left: 50%;
 	margin-left: -8.25rem;
-	padding-top: 2.75rem;
+	/*padding-top: 2.75rem;*/
 	top: 6.35rem;
 	background: url(img/form_bg.png) no-repeat;
 	background-size: 100%;
 }
-
+.form-input-warp{
+	position: absolute;
+	top: 2.75rem;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
 .form-input-row {
 	display: inline-block;
 	width: 15.6rem;

@@ -61,11 +61,7 @@ function pageInit() {
 		}, 500);
 	});
 
-	$('.btn-2').on('tap', function() {
-		console.log('点击确定激活');
-		//mui.toast('点击了确定激活')
-		mui.alert('激活操作')
-	});
+	 
 	$('.music-btn').on('tap', function() {
 		console.log('点击音乐播放');
 		document.getElementById("music").play();

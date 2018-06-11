@@ -16,6 +16,7 @@
 		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/count.js" type="text/javascript" charset="utf-8"></script>
 		<script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+		<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.min.js"></script>  
 		<script src="js/http.js" type="text/javascript" charset="utf-8"></script>
 		<!--<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript" charset="utf-8"></script>-->
 		<!--<script src="js/jquery.aniview.js" type="text/javascript" charset="utf-8"></script>-->
@@ -77,44 +78,77 @@
 				<div class="finger hidden animated" an-show="bounceInUp" an-hide="bounceOutDown"></div>
 				<!-- 校友激活表单 -->
 				<div class="student-form hidden animated" an-show="zoomInRight" an-hide="bounceOutUp">
-					<div class="form-input-row">
-						<div class="form-icon name"></div>
-						<div class="form-input">
-							<input type="text" placeholder="请输入您的姓名">
+					<div class="mui-scroll-wrapper form-input-warp">
+					    <div class="mui-scroll">
+					        <!--这里放置真实显示的DOM内容-->
+					        <div class="form-input-row">
+							<div class="form-icon name"></div>
+							<div class="form-input">
+								<input id="stu-name" name="stu-name" type="text" placeholder="请输入您的姓名">
+							</div>
 						</div>
-					</div>
-					<div class="form-input-row">
-						<div class="form-icon sex"></div>
-						<div class="form-input">
-							<select name="">
-								<option value="" disabled selected>请输入您的性别</option>
-								<option value="1">男</option>
-								<option value="1">女</option>
-							</select>
+						<div class="form-input-row">
+							<div class="form-icon sex"></div>
+							<div class="form-input">
+								<select id="sex" name="sex">
+									<option value="" disabled selected>请输入您的性别</option>
+									<option value="1">男</option>
+									<option value="1">女</option>
+								</select>
+							</div>
 						</div>
-					</div>
-					<div class="form-input-row">
-						<div class="form-icon grade"></div>
-						<div class="form-input">
-							<select name="">
-								<option value="" disabled selected>请输入您的毕业年份</option>
-							</select>
+						<div class="form-input-row">
+							<div class="form-icon phone"></div>
+							<div class="form-input">
+								<input id="phone" name="phone" type="number" placeholder="请输入您的手机号">
+							</div>
 						</div>
-					</div>
-					<div class="form-input-row">
-						<div class="form-icon class"></div>
-						<div class="form-input">
-							<select name="">
-								<option value="" disabled selected>请输入您的所属班级</option>
-							</select>
+						<div class="form-input-row">
+							<div class="form-icon grade"></div>
+							<div class="form-input">
+								<select id="campus-name" name="campus-name">
+									<option value="" disabled selected>请输入您的毕业校区</option>
+								</select>
+							</div>
 						</div>
-					</div>
-					<div class="form-input-row">
-						<div class="form-icon phone"></div>
-						<div class="form-input">
-							<input type="number" placeholder="请输入您的手机号">
+						<div class="form-input-row">
+							<div class="form-icon grade"></div>
+							<div class="form-input">
+								<select id="grade-year" name="grade-year">
+									<option value="" disabled selected>请输入您的毕业年份</option>
+								</select>
+							</div>
 						</div>
+						<div class="form-input-row">
+							<div class="form-icon class"></div>
+							<div class="form-input">
+								<select id="class-id" name="class-id">
+									<option value="" disabled selected>请输入您的所属班级</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-input-row">
+							<div class="form-icon phone"></div>
+							<div class="form-input">
+								<input id="nickname" name="nickname" type="text" placeholder="请输入您的外号">
+							</div>
+						</div>
+						<div class="form-input-row">
+							<div class="form-icon phone"></div>
+							<div class="form-input">
+								<input id="pwd" type="password" placeholder="请输入您的密码">
+							</div>
+						</div>
+						<div class="form-input-row">
+							<div class="form-icon phone"></div>
+							<div class="form-input">
+								<input id="pwd1" type="password" placeholder="请确认您的密码">
+							</div>
+						</div>
+					    </div>
 					</div>
+					 
+
 				</div>
 			</div>
 
