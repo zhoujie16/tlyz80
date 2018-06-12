@@ -13,29 +13,6 @@
 		<script type="text/javascript">
 			mui.init()
 		</script>
-		<script type="text/javascript">
-			var hl = `<select multiple name="">
-			<option value="">111</option>
-			<option value="">222</option>
-			<option value="">333</option>
-			<option value="">444</option>
-		</select>`
-			were()
-			function were(){
-				mui.confirm(hl,'title',['取消','确认'],function (e) {
-				if (e.index) {
-					mui.alert('message','title','btnValue',function (e) {
-					   mui.later(function(){
-					   		were()  
-					   	},500)
-					},'div')
-				}
-			},'div')
-			}
-			
-		</script>
-		<select name=""></select>
-		
 	</body>
 
 </html>
