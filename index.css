@@ -387,7 +387,31 @@ body {
 .form-icon.phone {
 	background-position-y: -14.25rem;
 }
-
+.form-icon.campus{
+	background-image: url(img/form_campus.png);
+	background-repeat: no-repeat;
+	background-size: 1.45rem;
+	background-position: center;
+}
+.form-icon.grade{
+	background-image: url(img/form_grade.png);
+	background-repeat: no-repeat;
+	background-size: 1.45rem;
+	background-position: center;
+}
+.form-icon.password{
+	background-image: url(img/form_pwd.png);
+	background-repeat: no-repeat;
+	background-size: 1.45rem;
+	background-position: center;
+}
+.form-icon.class{
+	background-image: url(img/form_class.png);
+	background-repeat: no-repeat;
+	background-size: 1.45rem;
+	background-position: center;
+}
+ 
 .form-input {
 	display: inline-block;
 	width: 13.6rem;
