@@ -1,5 +1,5 @@
 $(function() {
-	mui('.mui-scroll-wrapper').scroll() 
+	mui('.mui-scroll-wrapper').scroll()
 	var url = 'http://101.201.196.132/school_webapi';
 	var model = {
 		"classId": "11",
@@ -34,7 +34,7 @@ $(function() {
 		$campusName.empty();
 		$campusName.append('<option value="" disabled selected>请输入您的毕业校区</option>')
 		dataList.forEach(function(item, i) {
-			var $opt = '<option value="' + item.campusId + '">' + item.campusName + '</option>'
+			var $opt = '<option value="' + item._id + '">' + item.name + '</option>'
 			$campusName.append($opt);
 		});
 	});
@@ -42,7 +42,7 @@ $(function() {
 		$gradeYear.empty();
 		$gradeYear.append('<option value="" disabled selected>请输入您的毕业年份</option>')
 		dataList.forEach(function(item, i) {
-			var $opt = '<option value="' + item.gradeYear + '">' + item.gradeName + '</option>'
+			var $opt = '<option value="' + item._id + '">' + item.name + '</option>'
 			$gradeYear.append($opt);
 		});
 	});
@@ -57,7 +57,7 @@ $(function() {
 				$classId.empty();
 				$classId.append('<option value="" disabled selected>请输入您的所属班级</option>')
 				dataList.forEach(function(item, i) {
-					var $opt = '<option value="' + item.classId + '">' + item.className + '</option>'
+					var $opt = '<option value="' + item._id + '">' + item.name + '</option>'
 					$classId.append($opt);
 				});
 			})
@@ -73,7 +73,7 @@ $(function() {
 			$classId.append('<option value="" disabled selected>请输入您的所属班级</option>')
 			queryClass(campusId, gradeYear, function(dataList) {
 				dataList.forEach(function(item, i) {
-					var $opt = '<option value="' + item.classId + '">' + item.className + '</option>'
+					var $opt = '<option value="' + item._id + '">' + item.name + '</option>'
 					$classId.append($opt);
 				});
 			})
@@ -133,16 +133,28 @@ $(function() {
 			return;
 		}
 
-		studentActive(params, function(data) {
+		studentActive({
+			name: params.stuName,
+			classId: params.classId,
+			sex: params.sex,
+			phone: params.phone,
+			password: params.pwd,
+			//longitude
+			//latitude
+			//address
+		}, function(data) {
 			//校友身份是否存在
 			if(data.ret === 0) { //存在
 				console.log('校友身份存在')
 				mui.alert('激活成功')
 			} else if(data.ret == 901) { //不存在 data.ret == 901
-				mui.confirm(data.msg, '提示', ['取消', '确认'], function(e) {
+				mui.confirm('校友不存在，是否提交补录申请？', '提示', ['取消', '确认'], function(e) {
 					if(e.index) {
 						console.log('提交补录  查找同班同学');
-						queryClassmate(params.classId, function(classmates) {
+						queryClassmate({
+							_id: params.classId,
+							activeStatus: 0
+						}, function(classmates) {
 							if(classmates.length > 3) {
 								console.log('存在3个同班同学');
 								test();
@@ -150,7 +162,7 @@ $(function() {
 								function test() {
 									var html = '';
 									classmates.forEach(function(item, i) {
-										html += '<option value="' + item.stuId + '">' + item.stuName + '</option>'
+										html += '<option value="' + item._id + '">' + item.name + '</option>'
 									});
 									html = '<div>校友列表(必须选择三个同学)</div>' + '<select id="classmate-sel" multiple name="">' + html + '</select>';
 									mui.confirm(html, '申请校友验证', ['取消', '确认'], function(e) {
@@ -164,15 +176,15 @@ $(function() {
 												});
 												return;
 											}
-											postrecd({
+											postrecord({
+												name: params.stuName,
 												classId: params.classId,
 												sex: params.sex,
+												auditType: 2,
 												ids: ids,
-												verifyType: 2,
-												stuName: params.stuName,
 												phone: params.phone,
-												pwd: params.pwd,
-												nickname: params.nickname
+												password: params.pwd,
+												eventType: 1,
 											}, function(data) {
 												if(data.ret === 0) {
 													mui.alert(data.msg)
@@ -183,14 +195,14 @@ $(function() {
 								}
 							} else {
 								console.log('没有3个同班同学');
-								postrecd({
+								postrecord({
+									name: params.stuName,
 									classId: params.classId,
 									sex: params.sex,
-									verifyType: 1,
-									stuName: params.stuName,
+									auditType: 1,
 									phone: params.phone,
-									pwd: params.pwd,
-									nickname: params.nickname
+									password: params.pwd,
+									eventType: 1,
 								}, function(data) {
 									if(data.ret === 0) {
 										mui.alert(data.msg)
@@ -200,13 +212,16 @@ $(function() {
 						});
 					}
 				}, 'div');
-			} else if(data.ret == 902){
-				mui.alert(data.msg);
-			}else if(data.ret == 903) { //该校友已被激活，您的身份可能被冒用，是否提交审核
-				mui.confirm(data.msg, '提示', ['取消', '确认'], function(e) {
+			} else if(data.ret == 902) {
+				mui.alert('存在同名的同学，请输入您的外号');
+			} else if(data.ret == 903) { //该校友已被激活，您的身份可能被冒用，是否提交审核
+				mui.confirm('该校友已被激活，您的身份可能被冒用，是否提交审核？', '提示', ['取消', '确认'], function(e) {
 					if(e.index) {
 						console.log('提交审核 查找同班同学')
-						queryClassmate(params.classId, function(classmates) {
+						queryClassmate({
+							_id: params.classId,
+							activeStatus: 1
+						}, function(classmates) {
 							if(classmates.length > 3) {
 								console.log('存在3个同班同学');
 								test()
@@ -214,7 +229,7 @@ $(function() {
 								function test() {
 									var html = '';
 									classmates.forEach(function(item, i) {
-										html += '<option value="' + item.stuId + '">' + item.stuName + '</option>'
+										html += '<option value="' + item._id + '">' + item.name + '</option>'
 									});
 									html = '<div>校友列表(必须选择三个同学)</div>' + '<select id="classmate-sel" multiple name="">' + html + '</select>';
 									mui.confirm(html, '申请校友验证', ['取消', '确认'], function(e) {
@@ -229,14 +244,14 @@ $(function() {
 												return;
 											}
 											fakeid({
+												name: params.stuName,
 												classId: params.classId,
 												sex: params.sex,
+												auditType: 2,
 												ids: ids,
-												verifyType: 2,
-												stuName: params.stuName,
 												phone: params.phone,
-												pwd: params.pwd,
-												nickname: params.nickname
+												password: params.pwd,
+												eventType: 2,
 											}, function(data) {
 												if(data.ret === 0) {
 													mui.alert(data.msg)
@@ -248,13 +263,13 @@ $(function() {
 							} else {
 								console.log('没有3个同班同学');
 								fakeid({
+									name: params.stuName,
 									classId: params.classId,
 									sex: params.sex,
-									verifyType: 1,
-									stuName: params.stuName,
+									auditType: 1, 
 									phone: params.phone,
-									pwd: params.pwd,
-									nickname: params.nickname
+									password: params.pwd,
+									eventType: 2,
 								}, function(data) {
 									if(data.ret === 0) {
 										mui.alert(data.msg)
@@ -291,10 +306,30 @@ $(function() {
 						mui.alert('请求出错');
 					});
 			}
+
+			function postrecord(params, success) {
+				axios.post(url + '/event/postrecord', {
+						name: '',
+						classId: '',
+						sex: '',
+						auditType: '',
+						phone: '',
+						ids: '',
+						password: '',
+						eventType: '',
+					}).then(function(response) {
+						var data = response.data;
+						console.log('补录申请', data);
+						success(data);
+					})
+					.catch(function(error) {
+						console.log(error);
+						mui.alert('请求出错');
+					});
+			}
 			//查找同班同学
-			function queryClassmate(classId, success) {
-				axios.post(url + '/student/classmates', {
-						classId: classId,
+			function queryClassmate(params, success) {
+				axios.post(url + '/student/classmates/' + params._id, {
 						activeStatus: 1
 					})
 					.then(function(response) {
@@ -327,7 +362,7 @@ $(function() {
 
 	function queryCampus(success) {
 		//查校区 
-		axios.get(url + '/campus')
+		axios.get(url + '/campus/list')
 			.then(function(response) {
 				var campusList = response.data.dataList;
 				console.log('查校区campus', campusList);
@@ -346,7 +381,7 @@ $(function() {
 				pageNum: 1,
 				pageSize: 200,
 				campusId: campas,
-				gradeYear: grade
+				gradeId: grade
 			})
 			.then(function(response) {
 				var classList = response.data.dataList;
