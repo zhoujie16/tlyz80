@@ -1,5 +1,10 @@
 @charset "utf-8";
 
+@font-face
+{
+    font-family: myFont;
+    src: url('fonts/letter-font.ttf');
+}
 /* 等待提示 S */
 
 .loading-view {
@@ -205,10 +210,23 @@ body {
 	width: 13rem;
 	height: 17.25rem;
 	top: 17.25rem;
-	background: url(img/letter.png) no-repeat;
+	background: url(img/letter2.png) no-repeat;
 	background-size: 100%;
 }
-
+.letter-text{
+	font-family:"myFont";
+	font-size: 0.65rem;
+	text-indent: 1rem;
+	position: absolute;
+    top: 2.4rem;
+    left: 1rem;
+    right: 1rem;
+    bottom: 0.4rem;
+    overflow: scroll;
+    padding-bottom: 4rem; 
+    color: black;
+	
+}
 .envelope {
 	position: absolute;
 	width: 13rem;

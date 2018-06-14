@@ -16,7 +16,7 @@
 		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/count.js" type="text/javascript" charset="utf-8"></script>
 		<script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
-		<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.min.js"></script>  
+		<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.min.js"></script>
 		<script src="js/http.js" type="text/javascript" charset="utf-8"></script>
 		<!--<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript" charset="utf-8"></script>-->
 		<!--<script src="js/jquery.aniview.js" type="text/javascript" charset="utf-8"></script>-->
@@ -51,7 +51,15 @@
 			<div class="envelope-warp hidden animated" an-show="jackInTheBox" an-hide="zoomOutRight">
 				<div class="envelope-inner"></div>
 				<!-- 信件 -->
-				<div class="letter"></div>
+				<div class="letter">
+					<div class="letter-text">
+						<div>铜陵市第一中学办于1938年春，简称铜陵一中，四次搬迁，易校名，安放省重点中学，安澈省示范高中。 </div>
+						<div>学校评全国体育生工作先进单位、全国现代数育技淅实验学校、省第、第五屈文明单位、省爱国主换数育示范学校、省绿绿色学校。 </div>
+						<div>1938年年春辩，校址在重庆市永川区，原名"国立第十六中学"。 </div>
+						<div>1946年秋奉前数育部指令，学校迁至陵县和洲，易名"省立铜陵中学"。 </div>
+						<div>1955年秋因水灾迁至陵市长江东路15号名篇”纤同官山中学"。 </div>
+					</div>
+				</div>
 				<div class="envelope"></div>
 				<div class="envelope-cover"></div>
 				<div class="envelope-click"></div>
@@ -79,75 +87,74 @@
 				<!-- 校友激活表单 -->
 				<div class="student-form hidden animated" an-show="zoomInRight" an-hide="bounceOutUp">
 					<div class="mui-scroll-wrapper form-input-warp">
-					    <div class="mui-scroll">
-					        <!--这里放置真实显示的DOM内容-->
-					        <div class="form-input-row">
-							<div class="form-icon name"></div>
-							<div class="form-input">
-								<input id="stu-name" name="stu-name" type="text" placeholder="请输入您的姓名">
+						<div class="mui-scroll">
+							<!--这里放置真实显示的DOM内容-->
+							<div class="form-input-row">
+								<div class="form-icon name"></div>
+								<div class="form-input">
+									<input id="stu-name" name="stu-name" type="text" placeholder="请输入您的姓名">
+								</div>
+							</div>
+							<div class="form-input-row">
+								<div class="form-icon sex"></div>
+								<div class="form-input">
+									<select id="sex" name="sex">
+										<option value="" disabled selected>请输入您的性别</option>
+										<option value="1">男</option>
+										<option value="1">女</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-input-row">
+								<div class="form-icon phone"></div>
+								<div class="form-input">
+									<input id="phone" name="phone" type="number" placeholder="请输入您的手机号">
+								</div>
+							</div>
+							<div class="form-input-row">
+								<div class="form-icon campus"></div>
+								<div class="form-input">
+									<select id="campus-name" name="campus-name">
+										<option value="" disabled selected>请输入您的毕业校区</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-input-row">
+								<div class="form-icon grade"></div>
+								<div class="form-input">
+									<select id="grade-year" name="grade-year">
+										<option value="" disabled selected>请输入您的毕业年份</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-input-row">
+								<div class="form-icon class"></div>
+								<div class="form-input">
+									<select id="class-id" name="class-id">
+										<option value="" disabled selected>请输入您的所属班级</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-input-row">
+								<div class="form-icon nickname"></div>
+								<div class="form-input">
+									<input id="nickname" name="nickname" type="text" placeholder="请输入您的外号">
+								</div>
+							</div>
+							<div class="form-input-row">
+								<div class="form-icon password"></div>
+								<div class="form-input">
+									<input id="pwd" type="password" placeholder="请输入您的密码">
+								</div>
+							</div>
+							<div class="form-input-row">
+								<div class="form-icon password"></div>
+								<div class="form-input">
+									<input id="pwd1" type="password" placeholder="请确认您的密码">
+								</div>
 							</div>
 						</div>
-						<div class="form-input-row">
-							<div class="form-icon sex"></div>
-							<div class="form-input">
-								<select id="sex" name="sex">
-									<option value="" disabled selected>请输入您的性别</option>
-									<option value="1">男</option>
-									<option value="1">女</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-input-row">
-							<div class="form-icon phone"></div>
-							<div class="form-input">
-								<input id="phone" name="phone" type="number" placeholder="请输入您的手机号">
-							</div>
-						</div>
-						<div class="form-input-row">
-							<div class="form-icon campus"></div>
-							<div class="form-input">
-								<select id="campus-name" name="campus-name">
-									<option value="" disabled selected>请输入您的毕业校区</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-input-row">
-							<div class="form-icon grade"></div>
-							<div class="form-input">
-								<select id="grade-year" name="grade-year">
-									<option value="" disabled selected>请输入您的毕业年份</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-input-row">
-							<div class="form-icon class"></div>
-							<div class="form-input">
-								<select id="class-id" name="class-id">
-									<option value="" disabled selected>请输入您的所属班级</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-input-row">
-							<div class="form-icon nickname"></div>
-							<div class="form-input">
-								<input id="nickname" name="nickname" type="text" placeholder="请输入您的外号">
-							</div>
-						</div>
-						<div class="form-input-row">
-							<div class="form-icon password"></div>
-							<div class="form-input">
-								<input id="pwd" type="password" placeholder="请输入您的密码">
-							</div>
-						</div>
-						<div class="form-input-row">
-							<div class="form-icon password"></div>
-							<div class="form-input">
-								<input id="pwd1" type="password" placeholder="请确认您的密码">
-							</div>
-						</div>
-					    </div>
 					</div>
-					 
 
 				</div>
 			</div>

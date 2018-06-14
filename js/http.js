@@ -1,5 +1,5 @@
 $(function() {
-	mui('.mui-scroll-wrapper').scroll()
+	mui('.mui-scroll-wrapper').scroll() 
 	var url = 'http://101.201.196.132/school_webapi';
 	var model = {
 		"classId": "11",
