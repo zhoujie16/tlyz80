@@ -30,7 +30,7 @@ function pageInit() {
 				$('.envelope-cover').addClass('active')
 				setTimeout(function() {
 					$('.envelope-cover').animate({
-						bottom: '8.55rem'
+						bottom: '7.7rem'
 					}, 300);
 				}, 400)
 				setTimeout(function() {

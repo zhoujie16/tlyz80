@@ -31,14 +31,14 @@
 
 html {
 	width: 18.75rem;
-	height: 33.35rem;
+	height: 100vh;
 	overflow: hidden;
 }
 
 body {
 	position: relative;
 	width: 18.75rem;
-	height: 33.35rem;
+	height: 100vh;
 	overflow: hidden;
 }
 
@@ -79,8 +79,8 @@ body {
 	position: absolute;
 	left: 1rem;
 	top: 0.9rem;
-	width: 7rem;
-	height: 1.5rem;
+	width: 6.3rem;
+	height: 1.35rem;
 	background-image: url(img/logo1.png);
 	background-repeat: no-repeat;
 	background-size: 100%;
@@ -90,9 +90,11 @@ body {
 	position: absolute;
 	left: 50%;
 	top: 3rem;
-	width: 13.1rem;
-	height: 15.6rem;
-	margin-left: -6.55rem;
+	/*width: 13rem;*/
+	width: 11.7rem;
+	/*height: 15.6rem;*/
+	height: 14.04rem;
+	margin-left: -5.85rem;
 	background-image: url(img/hello80.png);
 	background-repeat: no-repeat;
 	background-size: 100%;
@@ -102,9 +104,9 @@ body {
 	position: absolute;
 	left: 50%;
 	bottom: 0.9rem;
-	width: 6.4rem;
-	height: 2.1rem;
-	margin-left: -3.2rem;
+	width: 5.76rem;
+	height: 1.89rem;
+	margin-left: -2.88rem;
 	background-image: url(img/date_add.png);
 	background-repeat: no-repeat;
 	background-size: 100%;
@@ -115,9 +117,11 @@ body {
 	left: 50%;
 	top: 2.4rem;
 	bottom: 0.9rem;
-	width: 16.6rem;
-	height: 3.4rem;
-	margin-left: -8.3rem;
+	/*width: 16.6rem;*/
+	width: 14.94rem;
+	/*height: 3.4rem;*/
+	height: 3.06rem;
+	margin-left: -7.47rem;
 	background-image: url(img/introduce_header.png);
 	background-repeat: no-repeat;
 	background-size: 100%;
@@ -183,10 +187,12 @@ body {
 
 .envelope-warp {
 	position: absolute;
-	width: 13.1rem;
-	height: 22rem;
+	/*width: 13.1rem;*/
+	width: 11.7rem;
+	/*height: 22rem;*/
+	height: 19.8rem;
 	left: 50%;
-	margin-left: -6.55rem;
+	margin-left: -5.85rem;
 	bottom: 4.2rem;
 	overflow: hidden;
 	z-index: 10;
@@ -195,9 +201,12 @@ body {
 
 .envelope-inner {
 	position: absolute;
-	width: 13rem;
-	height: 4rem;
-	bottom: 4.65rem;
+	/*width: 13rem;*/
+	width: 11.7rem;
+	/*height: 4rem;*/
+	height: 3.6rem;
+	/*bottom: 4.65rem;*/
+	bottom: 4.2rem;
 	background: url(img/envelope_inner.png) no-repeat;
 	background-size: 100%;
 }
@@ -207,8 +216,10 @@ body {
 
 .envelope-warp .letter {
 	position: absolute;
-	width: 13rem;
-	height: 17.25rem;
+	/*width: 13rem;*/
+	width: 11.7rem;
+	/*height: 17.25rem;*/
+	height: 15.525rem;
 	top: 17.25rem;
 	background: url(img/letter2.png) no-repeat;
 	background-size: 100%;
@@ -229,8 +240,10 @@ body {
 }
 .envelope {
 	position: absolute;
-	width: 13rem;
-	height: 8.85rem;
+	/*width: 13rem;*/
+	width: 11.7rem;
+	/*height: 8.85rem;*/
+	height: 7.965rem;
 	bottom: 0;
 	background-image: url(img/envelope.png);
 	background-repeat: no-repeat;
@@ -239,9 +252,12 @@ body {
 
 .envelope-cover {
 	position: absolute;
-	width: 13rem;
-	height: 6.15rem;
-	bottom: 8.95rem;
+	/*width: 13rem;*/
+	width: 11.7rem;
+	/*height: 6.15rem;*/
+	height: 5.535rem;
+	/*bottom: 8.95rem;*/
+	bottom: 8rem;
 	background: url(img/envelope_cover.png) no-repeat;
 	background-size: 100%;
 	transform: rotateX(180deg);
@@ -293,11 +309,13 @@ body {
 
 .btn-bottom {
 	position: absolute;
-	width: 8rem;
-	height: 1.8rem;
+	/*width: 8rem;*/
+	width: 7.2rem;
+	/*height: 1.8rem;*/
+	height: 1.62rem;
 	bottom: 2rem;
 	left: 50%;
-	margin-left: -4rem;
+	margin-left: -3.6rem;
 	background-color: initial;
 	border: none;
 	background: url(img/btn1.png) no-repeat;
