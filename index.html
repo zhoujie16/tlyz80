@@ -30,9 +30,10 @@
 			document.getElementsByTagName('html')[0].style.fontSize = fz + 'px';
 		</script>
 		<div style="display: none;">
-			<audio autoplay id="music">
+			<!--<audio id="bgaudio" src="assets/dnxk.mp3" loop="loop"></audio>-->
+			<!--<audio autoplay id="music">
 				<source src="assets/dnxk.mp3" type="audio/mp3">
-			</audio>
+			</audio>-->
 		</div>
 		<div class="content mui-fullscreen">
 			<!-- 等待动画 -->
@@ -66,7 +67,7 @@
 				<div class="envelope-click"></div>
 			</div>
 			<!-- 80周年校庆图层 (头部 中间图片 底部时间地点) -->
-			<div class="hello-80 mui-fullscreen">
+			<div class="hello-80 mui-fullscreen overflow-y-scroll">
 				<!-- 铜陵一中 -->
 				<div class="hello-logo hidden animated" an-show="bounceInDown" an-hide="bounceOutUp"></div>
 				<!--找回你的青春-->
@@ -175,6 +176,11 @@
 			speed: 60,
 			count: 99
 		});
+		var audio = document.createElement("audio");
+
+		$('.music-btn,body').on('tap', function() {
+			audio.play()
+		})
 
 		function loadImg() {
 			var img = new Image();
@@ -188,10 +194,17 @@
 				}
 			} else {
 				console.log('加载结束')
-				mui.later(function() {
+				audio.src = "assets/dnxk.mp3";
+				audio.addEventListener("canplaythrough", function() {
+					console.log('音频文件已经准备好，随时待命');
 					$('.loading-view').fadeOut(500);
 					pageInit();
-				}, 1000)
+					audio.play()
+				}, false);
+				//				mui.later(function() {
+				//					$('.loading-view').fadeOut(500);
+				//					pageInit();
+				//				}, 1000)
 			}
 
 		}

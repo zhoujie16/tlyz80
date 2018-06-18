@@ -26,7 +26,13 @@
 
 /* 等待提示 E */
 
-
+.fixed-fullscreen{
+	position: fixed;
+}
+.overflow-y-scroll{
+	overflow-y: scroll;
+	overflow-x: hidden;
+} 
 /* 背景图片 S */
 
 html {
@@ -328,7 +334,8 @@ body {
 	width: 7.2rem;
 	/*height: 1.8rem;*/
 	height: 1.62rem;
-	bottom: 1.2rem;
+	/*bottom: 1.2rem;*/
+	top: 27.5rem;
 	left: 50%;
 	margin-left: -3.6rem;
 	background-color: initial;
@@ -362,7 +369,8 @@ body {
 	margin-left: -0.5rem;
 	background: url(img/finger.png) no-repeat;
 	background-size: 100%;
-	bottom: 0.25rem;
+	/*bottom: 0.25rem;*/
+	top: 28rem;
 	/*animation: fingerAnimate 1s linear infinite;*/
 }
 

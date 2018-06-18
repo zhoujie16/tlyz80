@@ -65,11 +65,6 @@ function pageInit() {
 			}, 800)
 		}, 500);
 	});
-
-	$('.music-btn').on('tap', function() {
-		console.log('点击音乐播放');
-		document.getElementById("music").play();
-	})
 }
 
 function showAnimate($obj) {
