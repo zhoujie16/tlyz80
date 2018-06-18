@@ -16,7 +16,7 @@ function pageInit() {
 	showAnimate($evenlope)
 	mui.later(function() {
 		showAnimate($helloPaner2)
-	}, 600)
+	}, 800)
 	$('.envelope-click').on('tap', function() {
 		$('.envelope-click').remove();
 		hideAnimate($helloLogo);
