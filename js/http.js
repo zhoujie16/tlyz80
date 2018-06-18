@@ -1,8 +1,9 @@
 $(function() {
 	mui('.mui-scroll-wrapper').scroll()
-	var url = 'http://101.201.196.132/school_webapi';
+	//var url = 'http://127.0.0.1:8080/pt-school/api';
+	var url = 'http://school.jsonpro.cn/pt-school/api';
 	var model = {
-		"classId": "11",
+		"classId": "1",
 		"gradeYear": "1991",
 		"sex": "1",
 		"campusName": "6",
@@ -34,7 +35,7 @@ $(function() {
 		$campusName.empty();
 		$campusName.append('<option value="" disabled selected>请输入您的毕业校区</option>')
 		dataList.forEach(function(item, i) {
-			var $opt = '<option value="' + item._id + '">' + item.name + '</option>'
+			var $opt = '<option value="' + item.id + '">' + item.name + '</option>'
 			$campusName.append($opt);
 		});
 	});
@@ -42,7 +43,7 @@ $(function() {
 		$gradeYear.empty();
 		$gradeYear.append('<option value="" disabled selected>请输入您的毕业年份</option>')
 		dataList.forEach(function(item, i) {
-			var $opt = '<option value="' + item._id + '">' + item.name + '</option>'
+			var $opt = '<option value="' + item.id + '">' + item.gradeName + '</option>'
 			$gradeYear.append($opt);
 		});
 	});
@@ -57,7 +58,7 @@ $(function() {
 				$classId.empty();
 				$classId.append('<option value="" disabled selected>请输入您的所属班级</option>')
 				dataList.forEach(function(item, i) {
-					var $opt = '<option value="' + item._id + '">' + item.name + '</option>'
+					var $opt = '<option value="' + item.id + '">' + item.name + '</option>'
 					$classId.append($opt);
 				});
 			})
@@ -73,7 +74,7 @@ $(function() {
 			$classId.append('<option value="" disabled selected>请输入您的所属班级</option>')
 			queryClass(campusId, gradeYear, function(dataList) {
 				dataList.forEach(function(item, i) {
-					var $opt = '<option value="' + item._id + '">' + item.name + '</option>'
+					var $opt = '<option value="' + item.id + '">' + item.name + '</option>'
 					$classId.append($opt);
 				});
 			})
@@ -139,22 +140,24 @@ $(function() {
 			sex: params.sex,
 			phone: params.phone,
 			password: params.pwd,
+			nickname: params.nickname
 			//longitude
 			//latitude
 			//address
 		}, function(data) {
 			//校友身份是否存在
-			if(data.ret === 0) { //存在
+			if(data.code === 200) { //存在
 				console.log('校友身份存在')
 				mui.alert('激活成功')
-			} else if(data.ret == 901) { //不存在 data.ret == 901
+			} else if(data.code == 901) { //不存在 data.ret == 901
 				mui.confirm('校友不存在，是否提交补录申请？', '提示', ['取消', '确认'], function(e) {
 					if(e.index) {
 						console.log('提交补录  查找同班同学');
 						queryClassmate({
-							_id: params.classId,
+							id: params.classId,
 							activeStatus: 0
 						}, function(classmates) {
+							debugger;
 							if(classmates.length > 3) {
 								console.log('存在3个同班同学');
 								test();
@@ -162,7 +165,7 @@ $(function() {
 								function test() {
 									var html = '';
 									classmates.forEach(function(item, i) {
-										html += '<option value="' + item._id + '">' + item.name + '</option>'
+										html += '<option value="' + item.id + '">' + item.name + '</option>'
 									});
 									html = '<div>校友列表(必须选择三个同学)</div>' + '<select id="classmate-sel" multiple name="">' + html + '</select>';
 									mui.confirm(html, '申请校友验证', ['取消', '确认'], function(e) {
@@ -204,7 +207,7 @@ $(function() {
 									password: params.pwd,
 									eventType: 1,
 								}, function(data) {
-									if(data.ret === 0) {
+									if(data.ret === 200) {
 										mui.alert(data.msg)
 									}
 								})
@@ -219,7 +222,7 @@ $(function() {
 					if(e.index) {
 						console.log('提交审核 查找同班同学')
 						queryClassmate({
-							_id: params.classId,
+							id: params.classId,
 							activeStatus: 1
 						}, function(classmates) {
 							if(classmates.length > 3) {
@@ -282,7 +285,7 @@ $(function() {
 			}
 			//身份审核
 			function fakeid(params, success) {
-				axios.post(url + '/student/fakeid', params)
+				axios.post(url + '/student/fakeidV2', params)
 					.then(function(response) {
 						var data = response.data;
 						console.log('提交身份审核', data);
@@ -295,7 +298,7 @@ $(function() {
 			}
 			//补录申请
 			function postrecd(params, success) {
-				axios.post(url + '/student/postrecd', params)
+				axios.post(url + '/student/postrecdV2', params)
 					.then(function(response) {
 						var data = response.data;
 						console.log('补录申请', data);
@@ -308,16 +311,7 @@ $(function() {
 			}
 
 			function postrecord(params, success) {
-				axios.post(url + '/event/postrecord', {
-						name: '',
-						classId: '',
-						sex: '',
-						auditType: '',
-						phone: '',
-						ids: '',
-						password: '',
-						eventType: '',
-					}).then(function(response) {
+				axios.post(url + '/event/postrecordV2', params).then(function(response) {
 						var data = response.data;
 						console.log('补录申请', data);
 						success(data);
@@ -329,11 +323,11 @@ $(function() {
 			}
 			//查找同班同学
 			function queryClassmate(params, success) {
-				axios.post(url + '/student/classmates/' + params._id, {
+				axios.post(url + '/student/classmates/' + params.id, {
 						activeStatus: 1
 					})
 					.then(function(response) {
-						var classmates = response.data.dataList;
+						var classmates = response.data.data;
 						console.log('查找同班同学 classmates', classmates);
 						success(classmates);
 					})
@@ -347,9 +341,9 @@ $(function() {
 
 	function queryGradeList(success) {
 		//查学届
-		axios.post(url + '/grade/list')
+		axios.get(url + '/grade/list')
 			.then(function(response) {
-				var gradeList = response.data.dataList;
+				var gradeList = response.data.data;
 				console.log('学届gradeList', gradeList);
 				success(gradeList);
 			})
@@ -364,7 +358,7 @@ $(function() {
 		//查校区 
 		axios.get(url + '/campus/list')
 			.then(function(response) {
-				var campusList = response.data.dataList;
+				var campusList = response.data.data;
 				console.log('查校区campus', campusList);
 				success(campusList);
 			})
@@ -377,14 +371,14 @@ $(function() {
 
 	function queryClass(campas, grade, success) {
 		//查班级
-		axios.post(url + '/class/list', {
+		axios.post(url + '/class/listV2', {
 				pageNum: 1,
 				pageSize: 200,
 				campusId: campas,
 				gradeId: grade
 			})
 			.then(function(response) {
-				var classList = response.data.dataList;
+				var classList = response.data.data;
 				console.log('查班级 classList', classList);
 				success(classList);
 			})
@@ -396,14 +390,13 @@ $(function() {
 	}
 	//校友激活
 	function studentActive(params, success) {
-		axios.post(url + '/student/active', params)
-			.then(function(response) {
-				console.log('校友激活', response.data);
-				success(response.data)
-			})
-			.catch(function(error) {
-				console.log(error);
-				mui.alert('请求出错');
-			});
+		axios.post(url + '/student/activeV2', params)
+		.then(function(response) {
+			console.log('校友激活', response.data);
+			success(response.data)
+		}).catch(function(error) {
+			console.log(error);
+			mui.alert('请求出错');
+		});
 	}
 });

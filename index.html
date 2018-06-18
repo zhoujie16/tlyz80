@@ -30,7 +30,7 @@
 			document.getElementsByTagName('html')[0].style.fontSize = fz + 'px';
 		</script>
 		<div style="display: none;">
-			<audio id="music">
+			<audio autoplay id="music">
 				<source src="assets/dnxk.mp3" type="audio/mp3">
 			</audio>
 		</div>
@@ -70,7 +70,8 @@
 				<!-- 铜陵一中 -->
 				<div class="hello-logo hidden animated" an-show="bounceInDown" an-hide="bounceOutUp"></div>
 				<!--找回你的青春-->
-				<div class="hello-paner hidden animated" an-show="zoomInLeft" an-hide="zoomOutRight"></div>
+				<div class="hello-paner-1 hidden animated" an-show="zoomInLeft" an-hide="zoomOutRight"></div>
+				<div class="hello-paner-2 hidden animated" an-show="bounceInDown" an-hide="zoomOutRight"></div>
 				<!--地址时间-->
 				<div class="hello-address-date hidden animated" an-show="bounceInUp" an-hide="bounceOutDown"></div>
 				<!-- 铜陵一中80周年 -->
@@ -102,7 +103,7 @@
 									<select id="sex" name="sex">
 										<option value="" disabled selected>请输入您的性别</option>
 										<option value="1">男</option>
-										<option value="1">女</option>
+										<option value="2">女</option>
 									</select>
 								</div>
 							</div>
@@ -165,28 +166,7 @@
 	</body>
 	<script src="index.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-		var imgList = [
-			'music.png',
-			'music_btn.png',
-			'btn1.png',
-			'btn2.png',
-			'date_add.png',
-			'envelope.png',
-			'envelope_btn.png',
-			'envelope_cover.png',
-			'envelope_inner.png',
-			'finger.png',
-			'form_bg.png',
-			'form_icon.png',
-			'hello80.png',
-			'introduce_header.png',
-			'letter.png',
-			'letter_2.png',
-			'logo1.png',
-			'select_icon_r.png',
-			'bg.png',
-			'bg2.png'
-		];
+		var imgList = ['bg.png', 'bg007.png', 'bg2.png', 'bg8.png', 'btn1.png', 'btn2.png', 'date_add.png', 'envelope.png', 'envelope_btn.png', 'envelope_cover.png', 'envelope_inner.png', 'finger.png', 'form_bg.png', 'form_campus.png', 'form_class.png', 'form_grade.png', 'form_icon.png', 'form_pwd.png', 'hello80.png', 'introduce_header.png', 'jieshao.png', 'letter.png', 'letter2.png', 'letter_2.png', 'logo1.png', 'music.png', 'music_btn.png', 'select_icon_r.png', 'yaoqinghan.png'];
 		var $loadingText = $('.loading-text');
 		var index = 0;
 		loadImg();

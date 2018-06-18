@@ -1,5 +1,6 @@
 var $helloLogo = $('.hello-logo');
-var $helloPaner = $('.hello-paner');
+var $helloPaner = $('.hello-paner-1');
+var $helloPaner2 = $('.hello-paner-2');
 var $helloAddressDate = $('.hello-address-date');
 var $evenlope = $('.envelope-warp')
 var $header80Year = $('.header-80year')
@@ -13,10 +14,14 @@ function pageInit() {
 	showAnimate($helloPaner)
 	showAnimate($helloAddressDate)
 	showAnimate($evenlope)
+	mui.later(function() {
+		showAnimate($helloPaner2)
+	}, 600)
 	$('.envelope-click').on('tap', function() {
 		$('.envelope-click').remove();
 		hideAnimate($helloLogo);
 		hideAnimate($helloPaner);
+		hideAnimate($helloPaner2);
 		hideAnimate($helloAddressDate);
 		mui.later(function() {
 			showAnimate($header80Year)
@@ -61,7 +66,6 @@ function pageInit() {
 		}, 500);
 	});
 
-	 
 	$('.music-btn').on('tap', function() {
 		console.log('点击音乐播放');
 		document.getElementById("music").play();
