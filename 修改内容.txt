@@ -1,1 +1,1 @@
-修改了index.html index.css  index.js 三个文件  添加了imgs目录图片
+修改了index.html index.css  index.js 三个文件
