@@ -199,10 +199,7 @@
 			count: 99
 		});
 		var audio = document.createElement("audio");
-
-		$('.music-btn,body').on('tap', function() {
-			audio.play()
-		})
+		audio.src = "assets/dnxk.mp3";
 
 		function loadImg() {
 			var img = new Image();
@@ -216,16 +213,20 @@
 				}
 			} else {
 				console.log('图片预加载结束')
-					$('.loading-view').fadeOut(500);
-				mui.later(function(){
-				pageInit();  
-				},1000)
-//				audio.play()
-//				audio.src = "assets/dnxk.mp3";
-//				audio.addEventListener("canplaythrough", function() {
-//					console.log('音频文件已经准备好，随时待命');
-//
-//				}, false);
+				$('.loading-view').fadeOut(500);
+				mui.later(function() {
+					pageInit();
+					audio.play()
+					$('.music-btn,body').on('tap', function() {
+						audio.play()
+					})
+				}, 1000)
+				//				audio.play()
+				//				audio.src = "assets/dnxk.mp3";
+				//				audio.addEventListener("canplaythrough", function() {
+				//					console.log('音频文件已经准备好，随时待命');
+				//
+				//				}, false);
 			}
 
 		}
