@@ -47,7 +47,7 @@
 				</div>
 			</div>
 			<!--背景图片-->
-			<div class="body-bg mui-fullscreen"></div>
+			<!--<div class="body-bg mui-fullscreen"></div>-->
 			<div class="body-bg2 mui-fullscreen"></div>
 			<!-- 信封容器 -->
 			<div class="envelope-warp hidden animated" an-show="jackInTheBox" an-hide="zoomOutRight">
@@ -71,7 +71,12 @@
 				<!-- 铜陵一中 -->
 				<div class="hello-logo hidden animated" an-show="bounceInDown" an-hide="bounceOutUp"></div>
 				<!--找回你的青春-->
-				<div class="hello-paner-1 hidden animated" an-show="zoomInLeft" an-hide="zoomOutRight"></div>
+				<div class="hello-paner-1 hidden animated" an-show="zoomInLeft" an-hide="zoomOutRight">
+					<div class="hello-paner-txt hidden zhou animated" an-show="rollIn" an-hide="zoomOutRight"></div>
+					<div class="hello-paner-txt hidden nian animated" an-show="rollIn" an-hide="zoomOutRight"></div>
+					<div class="hello-paner-txt hidden xiao animated" an-show="rollIn" an-hide="zoomOutRight"></div>
+					<div class="hello-paner-txt hidden qing animated" an-show="rollIn" an-hide="zoomOutRight"></div>
+				</div>
 				<div class="hello-paner-2 hidden animated" an-show="bounceInDown" an-hide="zoomOutRight"></div>
 				<!--地址时间-->
 				<div class="hello-address-date hidden animated" an-show="bounceInUp" an-hide="bounceOutDown"></div>
@@ -167,7 +172,24 @@
 	</body>
 	<script src="index.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-		var imgList = ['bg.png', 'bg007.png', 'bg2.png', 'bg8.png', 'btn1.png', 'btn2.png', 'date_add.png', 'envelope.png', 'envelope_btn.png', 'envelope_cover.png', 'envelope_inner.png', 'finger.png', 'form_bg.png', 'form_campus.png', 'form_class.png', 'form_grade.png', 'form_icon.png', 'form_pwd.png', 'hello80.png', 'introduce_header.png', 'jieshao.png', 'letter.png', 'letter2.png', 'letter_2.png', 'logo1.png', 'music.png', 'music_btn.png', 'select_icon_r.png', 'yaoqinghan.png'];
+		var imgList = ['bg2.jpg',
+			'bg8.png',
+			'btn1.png',
+			'btn2.png',
+			'date_add.png',
+			'envelope.png',
+			'envelope_btn.png',
+			'envelope_cover.png',
+			'envelope_inner.png',
+			'finger.png',
+			'form_bg.png',
+			'hello80bg.png',
+			'introduce_header.png',
+			'letter2.png',
+			'logo1.png',
+			'music.png',
+			'music_btn.png'
+		];
 		var $loadingText = $('.loading-text');
 		var index = 0;
 		loadImg();
@@ -188,23 +210,22 @@
 			if(url) {
 				img.src = 'img/' + url;
 				img.onload = function() {
-					//console.log('成功缓存图片' + url, index)
+					console.log('成功缓存图片' + url, index)
 					index = index + 1;
 					loadImg()
 				}
 			} else {
-				console.log('加载结束')
-				audio.src = "assets/dnxk.mp3";
-				audio.addEventListener("canplaythrough", function() {
-					console.log('音频文件已经准备好，随时待命');
+				console.log('图片预加载结束')
 					$('.loading-view').fadeOut(500);
-					pageInit();
-					audio.play()
-				}, false);
-				//				mui.later(function() {
-				//					$('.loading-view').fadeOut(500);
-				//					pageInit();
-				//				}, 1000)
+				mui.later(function(){
+				pageInit();  
+				},1000)
+//				audio.play()
+//				audio.src = "assets/dnxk.mp3";
+//				audio.addEventListener("canplaythrough", function() {
+//					console.log('音频文件已经准备好，随时待命');
+//
+//				}, false);
 			}
 
 		}

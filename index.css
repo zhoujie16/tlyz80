@@ -1,10 +1,10 @@
 @charset "utf-8";
-
-@font-face
-{
-    font-family: myFont;
-    src: url('fonts/letter-font.ttf');
+@font-face {
+	font-family: myFont;
+	src: url('fonts/letter-font.ttf');
 }
+
+
 /* 等待提示 S */
 
 .loading-view {
@@ -26,13 +26,16 @@
 
 /* 等待提示 E */
 
-.fixed-fullscreen{
+.fixed-fullscreen {
 	position: fixed;
 }
-.overflow-y-scroll{
+
+.overflow-y-scroll {
 	overflow-y: scroll;
 	overflow-x: hidden;
-} 
+}
+
+
 /* 背景图片 S */
 
 html {
@@ -52,7 +55,7 @@ body {
 	display: none;
 }
 
-.body-bg,
+/*.body-bg,
 .body-bg2 {
 	background-image: url(img/bg.png);
 	background-repeat: no-repeat;
@@ -60,10 +63,14 @@ body {
 	background-position: center;
 	z-index: -10;
 	opacity: 0;
-}
+}*/
 
 .body-bg2 {
-	background-image: url(img/bg2.png);
+	background-image: url(img/bg2.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	z-index: -10;
 	opacity: 1;
 }
 
@@ -97,15 +104,16 @@ body {
 	left: 50%;
 	top: 3rem;
 	/*width: 13rem;*/
-	width: 11.7rem;
+	width: 7.1775rem;
 	/*height: 15.6rem;*/
-	height: 14.04rem;
-	margin-left: -5.85rem;
-	background-image: url(img/bg007.png);
+	height: 12.915rem;
+	margin-left: -3.6rem;
+	background-image: url(img/hello80bg.png);
 	background-repeat: no-repeat;
 	background-size: 90%;
 	background-position: 0.5rem 1.2rem;
 }
+
 .hello-paner-2 {
 	position: absolute;
 	left: 50%;
@@ -118,6 +126,36 @@ body {
 	background-image: url(img/bg8.png);
 	background-repeat: no-repeat;
 	background-size: 100%;
+}
+
+.hello-paner-txt {
+	position: absolute;
+	left: 1.3rem;
+	width: 39px;
+	height: 43px;
+	background-image: url(img/hello_txt.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+.hello-paner-txt.zhou {
+	top: 3.8rem;
+	background-position-y: 1px;
+}
+
+.hello-paner-txt.nian {
+	top: 117px;
+	background-position-y: -41px;
+}
+
+.hello-paner-txt.xiao {
+	top: 160px;
+	background-position-y: -84px;
+}
+
+.hello-paner-txt.qing {
+	top: 204px;
+	background-position-y: -129px;
 }
 
 .hello-address-date {
@@ -244,20 +282,21 @@ body {
 	background: url(img/letter2.png) no-repeat;
 	background-size: 100%;
 }
-.letter-text{
-	font-family:"myFont";
+
+.letter-text {
+	font-family: "myFont";
 	font-size: 0.65rem;
 	text-indent: 1rem;
 	position: absolute;
-    top: 2.4rem;
-    left: 1rem;
-    right: 1rem;
-    bottom: 0.4rem;
-    overflow: scroll;
-    padding-bottom: 4rem; 
-    color: black;
-	
+	top: 2.4rem;
+	left: 1rem;
+	right: 1rem;
+	bottom: 0.4rem;
+	overflow: scroll;
+	padding-bottom: 4rem;
+	color: black;
 }
+
 .envelope {
 	position: absolute;
 	/*width: 13rem;*/
@@ -406,13 +445,15 @@ body {
 	background: url(img/form_bg.png) no-repeat;
 	background-size: 100%;
 }
-.form-input-warp{
+
+.form-input-warp {
 	position: absolute;
 	top: 2.75rem;
 	right: 0;
 	bottom: 0;
 	left: 0;
 }
+
 .form-input-row {
 	display: inline-block;
 	/*width: 15.6rem;*/
@@ -450,31 +491,35 @@ body {
 .form-icon.phone {
 	background-position-y: -14.25rem;
 }
-.form-icon.campus{
+
+.form-icon.campus {
 	background-image: url(img/form_campus.png);
 	background-repeat: no-repeat;
 	background-size: 1.45rem;
 	background-position: center;
 }
-.form-icon.grade{
+
+.form-icon.grade {
 	background-image: url(img/form_grade.png);
 	background-repeat: no-repeat;
 	background-size: 1.45rem;
 	background-position: center;
 }
-.form-icon.password{
+
+.form-icon.password {
 	background-image: url(img/form_pwd.png);
 	background-repeat: no-repeat;
 	background-size: 1.45rem;
 	background-position: center;
 }
-.form-icon.class{
+
+.form-icon.class {
 	background-image: url(img/form_class.png);
 	background-repeat: no-repeat;
 	background-size: 1.45rem;
 	background-position: center;
 }
- 
+
 .form-input {
 	display: inline-block;
 	width: 12rem;

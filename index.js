@@ -1,6 +1,10 @@
 var $helloLogo = $('.hello-logo');
 var $helloPaner = $('.hello-paner-1');
 var $helloPaner2 = $('.hello-paner-2');
+var $helloTxt1 = $('.hello-paner-txt.zhou');
+var $helloTxt2 = $('.hello-paner-txt.nian');
+var $helloTxt3 = $('.hello-paner-txt.xiao');
+var $helloTxt4 = $('.hello-paner-txt.qing');
 var $helloAddressDate = $('.hello-address-date');
 var $evenlope = $('.envelope-warp')
 var $header80Year = $('.header-80year')
@@ -16,6 +20,18 @@ function pageInit() {
 	showAnimate($evenlope)
 	mui.later(function() {
 		showAnimate($helloPaner2)
+		mui.later(function() {
+			showAnimate($helloTxt1)
+			mui.later(function() {
+				showAnimate($helloTxt2)
+				mui.later(function() {
+					showAnimate($helloTxt3)
+					mui.later(function() {
+						showAnimate($helloTxt4)
+					}, 500)
+				}, 500)
+			}, 500)
+		}, 500)
 	}, 800)
 	$('.envelope-click').on('tap', function() {
 		$('.envelope-click').remove();
